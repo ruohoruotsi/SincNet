@@ -13,6 +13,9 @@
 # How to run it:
 # python TIMIT_preparation.py $TIMIT_FOLDER $OUTPUT_FOLDER data_lists/TIMIT_all.scp 
 
+# NOTE: This script expects filenames in lowercase (e.g, train/dr1/fcjf0/si1027.wav" rather than "TRAIN/DR1/FCJF0/SI1027.WAV)
+
+
 import shutil
 import os
 import soundfile as sf
@@ -57,7 +60,7 @@ for i in range(len(list_sig)):
  signal=signal.astype(np.float64)
 
  # Signal normalization
- signal=signal/np.abs(np.max(signal))
+ signal=signal/np.max(np.abs(signal))
 
  # Read wrd file
  wrd_file=wav_file.replace(".wav",".wrd")
